@@ -1,0 +1,955 @@
+###
+# Scalar
+###
+scalar JSON
+
+###
+# Types
+###
+type Site {
+  acceptedLocales: [JSON]
+  domain: String
+  locale: String
+  phoneSupport: String
+  phoneOfficeHours: JSON
+  currency: String
+}
+type Viewer {
+  user: JSON
+  isRepeatClient: Boolean
+}
+type StructuredBrief {
+  id: JSON
+  source: String
+  state: JSON
+  userId: JSON
+  foreignKeys: JSON
+  isBundled: JSON
+  schemaId: JSON
+  category: JSON
+  designersWithSource: JSON
+  currency: String
+  partnerCoupon: JSON
+  groups: [Group]
+  dynamicFields: [InputField]
+  job: JSON
+  order: JSON
+  gstApplicable: Boolean
+  paymentSummary: PaymentSummary
+  uploader: UploaderConfig
+  contacts: [JSON]
+  designers: [User]
+  errors: [StructuredBriefValidationError]
+  product: JSON
+}
+type DesignerWithSource {
+  id: Int
+  source: String
+}
+type UploaderConfig {
+  requestAccessKey: String
+  bucket: String
+  requestEndpoint: String
+  signatureEndpoint: String
+  keyPrefix: String
+  signatureVersion: Int
+  region: String
+}
+type Locale {
+  tag: String
+  title: String
+}
+type Category {
+  key: String
+  title: String
+  priceRange: JSON
+}
+type ImageSources {
+  original: String
+  mediaCrop: String
+}
+type CreatorDesign {
+  title: String
+  imageSources: ImageSources
+}
+type CreatorHit {
+  responsivenessScore: Int
+  utcOffset: String
+  lastSeenAt: String
+  designerLevel: String
+  certifications: [String]
+  reviewRating: Int
+  locales: [Locale]
+  biography: String
+  categories: [Category]
+  completedProjectsCount: Int
+  repeatCount: Int
+  isAvailable: Boolean
+  designs: [CreatorDesign]
+}
+type User {
+  id: JSON
+  displayName: JSON
+  penaltyState: JSON
+  profile: CreatorHit
+  isAdmin: JSON
+  createProfile: JSON
+}
+type StructuredBriefValidationError {
+  field: String
+  reason: String
+}
+type Group {
+  id: String
+  title: String
+  renderPaymentSummary: Boolean
+}
+type InputField {
+  id: String
+  label: String
+  helperText: String
+  placeholder: String
+  inputValue: String
+  required: Boolean
+  description: String
+  groupId: String
+  type: String
+}
+type PaymentSummary {
+  currency: String
+  subtotal: Int
+  total: Int
+  tax: Int
+  bundleSavings: Int
+  items: [JSON]
+}
+type ProductFixedPriceProject {
+  key: JSON
+  title: JSON
+  description: JSON
+  summary: JSON
+  details: JSON
+  additionalDetails: JSON
+  disclaimer: JSON
+  image: JSON
+  headerVideo: JSON
+  pricing: JSON
+  fulfilmentMpvId: JSON
+  marketing: JSON
+  categoryExperience: JSON
+}
+type ProductPackageDetails {
+  title: JSON
+  description: JSON
+  ctaLink: JSON
+}
+type ProductPackageImage {
+  title: JSON
+  src: JSON
+  points: JSON
+  attribution: JSON
+  alt: JSON
+}
+type ProductPackageHeaderVideo {
+  title: JSON
+  src: JSON
+  attribution: JSON
+}
+type FixedPrice {
+  subtotal: JSON
+  gst: JSON
+  earningsInUsd: JSON
+  amounts: JSON
+  amount: JSON
+}
+type Marketing {
+  key: JSON
+  iconKey: JSON
+}
+type PartnerCoupon {
+  couponId: JSON
+  campaignId: JSON
+  expiry: JSON
+  notBefore: JSON
+  state: JSON
+  validPackages: JSON
+}
+type DynamicField {
+  __typename: String!
+}
+type MultiInputField {
+  id: JSON
+  label: JSON
+  multiInputValue: JSON
+  placeholder: JSON
+  groupId: JSON
+}
+type TextAreaField {
+  id: JSON
+  label: JSON
+  tooltip: JSON
+  placeholder: JSON
+  textAreaValue: JSON
+  required: JSON
+  subtext: JSON
+  groupId: JSON
+}
+type SelectChoiceField {
+  id: JSON
+  label: JSON
+  subtext: JSON
+  tooltip: JSON
+  placeholder: JSON
+  choiceValue: JSON
+  required: JSON
+  options: JSON
+  groupId: JSON
+}
+type MultiSelectChoiceField {
+  id: JSON
+  label: JSON
+  placeholder: JSON
+  multiChoiceValues: JSON
+  options: JSON
+  required: JSON
+  groupId: JSON
+}
+type GridChoiceField {
+  id: JSON
+  label: JSON
+  tooltip: JSON
+  placeholder: JSON
+  choiceValue: JSON
+  required: JSON
+  options: JSON
+  groupId: JSON
+  subtext: JSON
+  columns: JSON
+  footnote: JSON
+}
+type MultiGridChoiceField {
+  id: JSON
+  label: JSON
+  placeholder: JSON
+  multiGridChoiceValue: JSON
+  required: JSON
+  options: JSON
+  groupId: JSON
+  subtext: JSON
+  columns: JSON
+}
+type RadioChoiceField {
+  id: JSON
+  label: JSON
+  tooltip: JSON
+  subtext: JSON
+  placeholder: JSON
+  choiceValue: JSON
+  required: JSON
+  options: JSON
+  groupId: JSON
+}
+type BudgetField {
+  id: JSON
+  label: JSON
+  tooltip: JSON
+  budgetValue: JSON
+  subtext: JSON
+  groupId: JSON
+  zeroValueLabel: JSON
+}
+type MultiChoiceField {
+  id: JSON
+  label: JSON
+  subtext: JSON
+  required: JSON
+  subtextLink: JSON
+  multiChoiceValue: JSON
+  options: JSON
+  groupId: JSON
+}
+type DateField {
+  id: JSON
+  label: JSON
+  dateValue: JSON
+  subtext: JSON
+  groupId: JSON
+  required: JSON
+}
+type FilesField {
+  id: JSON
+  label: JSON
+  subtext: JSON
+  required: JSON
+  allowedFileTypes: JSON
+  filesValue: JSON
+  groupId: JSON
+  subtextLink: JSON
+  tooltip: JSON
+}
+type SquarespacePackageChoiceField {
+  id: JSON
+  label: JSON
+  groupId: JSON
+  required: JSON
+  squarespacePackageChoiceValue: JSON
+}
+type LogoContestTierChoiceField {
+  id: JSON
+  label: JSON
+  groupId: JSON
+  required: JSON
+  logoContestTierChoiceValue: JSON
+}
+type ContestUpgradesChoiceField {
+  id: JSON
+  label: JSON
+  groupId: JSON
+  required: JSON
+  contestUpgradesChoiceValues: JSON
+  contestUpgradesChoiceSubtext: JSON
+  options: JSON
+}
+type PrintServiceOptionsField {
+  id: JSON
+  label: JSON
+  groupId: JSON
+  subtext: JSON
+  required: JSON
+  value: JSON
+  image: JSON
+}
+type ClientConfiguredField {
+  id: JSON
+  groupId: JSON
+  required: JSON
+}
+type WorkEntityField {
+  id: JSON
+  workEntityValue: JSON
+  groupId: JSON
+  required: JSON
+  immutable: JSON
+}
+type CategoryAndLocale {
+  categoryKey: String
+  locale: String
+  isExperimental: Boolean
+}
+
+###
+# Inputs
+###
+type Map {
+  __typename: String!
+}
+input YourWorkItemsInput {
+  status: String
+  page: Int
+}
+
+###
+# Fragments
+###
+fragment Site on Site {
+  acceptedLocales {
+    tag
+    title
+    __typename
+  }
+  domain
+  locale
+  phoneSupport
+  phoneOfficeHours
+  currency
+  __typename
+}
+fragment StructuredBrief on StructuredBrief {
+  ...CommonBriefFields
+  currency
+  partnerCoupon {
+    ...PartnerCoupon
+    __typename
+  }
+  groups {
+    id
+    title
+    renderPaymentSummary
+    __typename
+  }
+  dynamicFields {
+    ...Field
+    __typename
+  }
+  job {
+    id
+    __typename
+  }
+  order {
+    id
+    items {
+      id
+      __typename
+    }
+    __typename
+  }
+  gstApplicable
+  paymentSummary {
+    ...PaymentSummary
+    __typename
+  }
+  isBundled
+  __typename
+}
+fragment Viewer on Viewer {
+  user {
+    ...User
+    __typename
+  }
+  isRepeatClient
+  __typename
+}
+fragment User on User {
+  id
+  isAdmin
+  __typename
+}
+fragment CommonBriefFields on StructuredBrief {
+  id
+  userId
+  schemaId
+  foreignKeys
+  category {
+    ...CategoryFields
+    __typename
+  }
+  uploader {
+    ...Uploader
+    __typename
+  }
+  contacts {
+    ...DesignerCard_User
+    __typename
+  }
+  designers {
+    ...DesignerCard_User
+    __typename
+  }
+  errors {
+    ...ValidationError
+    __typename
+  }
+  designersWithSource {
+    source
+    __typename
+  }
+  state
+  product {
+    ...ProductFixedPriceProject
+    __typename
+  }
+  __typename
+}
+fragment CategoryFields on Category {
+  key
+  title
+  priceRange
+  __typename
+}
+fragment Uploader on UploaderConfig {
+  requestAccessKey
+  bucket
+  requestEndpoint
+  signatureEndpoint
+  keyPrefix
+  signatureVersion
+  region
+  __typename
+}
+fragment DesignerCard_User on User {
+  ...DesignerMeta_User
+  createProfile {
+    reviewRating
+    responsivenessScore
+    completedProjectsCount
+    repeatCount
+    designs {
+      title
+      imageSources {
+        original
+        mediaCrop
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+fragment DesignerMeta_User on User {
+  id
+  displayName
+  penaltyState
+  createProfile {
+    responsivenessScore
+    utcOffset
+    lastSeenAt
+    designerLevel
+    certifications
+    reviewRating
+    locales {
+      tag
+      title
+      __typename
+    }
+    biography
+    categoriesWithValues {
+      key
+      title
+      __typename
+    }
+    completedProjectsCount
+    repeatCount
+    isAvailable
+    __typename
+  }
+  __typename
+}
+fragment ValidationError on StructuredBriefValidationError {
+  field
+  reason
+  __typename
+}
+fragment ProductFixedPriceProject on ProductFixedPriceProject {
+  __typename
+  key
+  title
+  description
+  summary
+  details {
+    ...PackageDetails
+    __typename
+  }
+  additionalDetails {
+    ...PackageDetails
+    __typename
+  }
+  disclaimer
+  image {
+    ...PackageImage
+    __typename
+  }
+  headerVideo {
+    ...PackageHeaderVideo
+    __typename
+  }
+  pricing {
+    ...FixedPrice
+    __typename
+  }
+  fulfilmentMpvId
+  marketing {
+    ...Marketing
+    __typename
+  }
+  categoryExperience {
+    count
+    title
+    category
+    __typename
+  }
+}
+fragment PackageDetails on ProductPackageDetails {
+  title
+  description
+  ctaLink
+  __typename
+}
+fragment PackageImage on ProductPackageImage {
+  title
+  src
+  points
+  attribution
+  alt
+  __typename
+}
+fragment PackageHeaderVideo on ProductPackageHeaderVideo {
+  title
+  src
+  attribution
+  __typename
+}
+fragment FixedPrice on FixedPrice {
+  subtotal
+  gst
+  earningsInUsd
+  amounts {
+    currency
+    amountInCents
+    __typename
+  }
+  amount {
+    currency
+    amountInCents
+    __typename
+  }
+  __typename
+}
+fragment Marketing on Marketing {
+  key
+  iconKey
+  __typename
+}
+fragment PartnerCoupon on PartnerCoupon {
+  couponId
+  campaignId
+  expiry
+  notBefore
+  state
+  validPackages
+  __typename
+}
+fragment Field on DynamicField {
+  ... on InputField {
+    ...InputField
+    __typename
+  }
+  ... on MultiInputField {
+    ...MultiInputField
+    __typename
+  }
+  ... on TextAreaField {
+    ...TextAreaField
+    __typename
+  }
+  ... on SelectChoiceField {
+    ...SelectChoiceField
+    __typename
+  }
+  ... on MultiSelectChoiceField {
+    ...MultiSelectChoiceField
+    __typename
+  }
+  ... on GridChoiceField {
+    ...GridChoiceField
+    __typename
+  }
+  ... on MultiGridChoiceField {
+    ...MultiGridChoiceField
+    __typename
+  }
+  ... on RadioChoiceField {
+    ...RadioChoiceField
+    __typename
+  }
+  ... on BudgetField {
+    ...BudgetField
+    __typename
+  }
+  ... on MultiChoiceField {
+    ...MultiChoiceField
+    __typename
+  }
+  ... on DateField {
+    ...DateField
+    __typename
+  }
+  ... on FilesField {
+    ...FilesField
+    __typename
+  }
+  ... on SquarespacePackageChoiceField {
+    ...SquarespacePackageChoiceField
+    __typename
+  }
+  ... on LogoContestTierChoiceField {
+    ...LogoContestTierChoiceField
+    __typename
+  }
+  ... on ContestUpgradesChoiceField {
+    ...ContestUpgradesChoiceField
+    __typename
+  }
+  ... on PrintServiceOptionsField {
+    ...PrintServiceOptionsField
+    __typename
+  }
+  ... on ClientConfiguredField {
+    ...ClientConfiguredField
+    __typename
+  }
+  ... on WorkEntityField {
+    ...WorkEntityField
+    __typename
+  }
+  __typename
+}
+fragment InputField on InputField {
+  __typename
+  id
+  label
+  helperText
+  placeholder
+  inputValue
+  required
+  description
+  groupId
+  type
+}
+fragment MultiInputField on MultiInputField {
+  __typename
+  id
+  label
+  multiInputValue
+  placeholder
+  groupId
+}
+fragment TextAreaField on TextAreaField {
+  __typename
+  id
+  label
+  tooltip
+  placeholder
+  textAreaValue
+  required
+  subtext
+  groupId
+}
+fragment SelectChoiceField on SelectChoiceField {
+  __typename
+  id
+  label
+  subtext
+  tooltip
+  placeholder
+  choiceValue
+  required
+  options {
+    label
+    subtext
+    value
+    group
+    __typename
+  }
+  groupId
+}
+fragment MultiSelectChoiceField on MultiSelectChoiceField {
+  __typename
+  id
+  label
+  placeholder
+  multiChoiceValues
+  options {
+    label
+    subtext
+    value
+    __typename
+  }
+  required
+  groupId
+}
+fragment GridChoiceField on GridChoiceField {
+  __typename
+  id
+  label
+  tooltip
+  placeholder
+  choiceValue
+  required
+  options {
+    label
+    subtext
+    value
+    price
+    image
+    __typename
+  }
+  groupId
+  subtext
+  columns
+  footnote
+}
+fragment MultiGridChoiceField on MultiGridChoiceField {
+  __typename
+  id
+  label
+  placeholder
+  multiGridChoiceValue
+  required
+  options {
+    label
+    subtext
+    value
+    image
+    __typename
+  }
+  groupId
+  subtext
+  columns
+}
+fragment RadioChoiceField on RadioChoiceField {
+  __typename
+  id
+  label
+  tooltip
+  subtext
+  placeholder
+  choiceValue
+  required
+  options {
+    label
+    subtext
+    value
+    price
+    currency
+    name
+    __typename
+  }
+  groupId
+}
+fragment BudgetField on BudgetField {
+  __typename
+  id
+  label
+  tooltip
+  budgetValue
+  subtext
+  groupId
+  zeroValueLabel
+}
+fragment MultiChoiceField on MultiChoiceField {
+  __typename
+  id
+  label
+  subtext
+  required
+  subtextLink
+  multiChoiceValue
+  options {
+    label
+    value
+    __typename
+  }
+  groupId
+}
+fragment DateField on DateField {
+  __typename
+  id
+  label
+  dateValue
+  subtext
+  groupId
+  required
+}
+fragment FilesField on FilesField {
+  __typename
+  id
+  label
+  subtext
+  required
+  allowedFileTypes
+  filesValue {
+    bucket
+    key
+    previewable
+    name
+    size
+    downloadUrl
+    previewUrl
+    __typename
+  }
+  groupId
+  subtextLink
+  tooltip
+}
+fragment SquarespacePackageChoiceField on SquarespacePackageChoiceField {
+  __typename
+  id
+  label
+  groupId
+  required
+  squarespacePackageChoiceValue
+}
+fragment LogoContestTierChoiceField on LogoContestTierChoiceField {
+  __typename
+  id
+  label
+  groupId
+  required
+  logoContestTierChoiceValue
+}
+fragment ContestUpgradesChoiceField on ContestUpgradesChoiceField {
+  __typename
+  id
+  label
+  groupId
+  required
+  contestUpgradesChoiceValues
+  contestUpgradesChoiceSubtext
+  options {
+    label
+    subtext
+    value
+    price
+    currency
+    promotionalText
+    optionDetails
+    __typename
+  }
+}
+fragment PrintServiceOptionsField on PrintServiceOptionsField {
+  __typename
+  id
+  label
+  groupId
+  subtext
+  required
+  value
+  image
+}
+fragment ClientConfiguredField on ClientConfiguredField {
+  __typename
+  id
+  groupId
+  required
+}
+fragment WorkEntityField on WorkEntityField {
+  __typename
+  id
+  workEntityValue
+  groupId
+  required
+  immutable
+}
+fragment PaymentSummary on PaymentSummary {
+  currency
+  subtotal
+  total
+  tax
+  bundleSavings
+  items {
+    title
+    amount
+    options {
+      title
+      amount
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+###
+# Queries and Mutations
+###
+type Query {
+  site: Site
+  me: Viewer
+  structuredBrief(id: String!): StructuredBrief
+  supportedCategories: [CategoryAndLocale]
+  yourWorkItems(input: YourWorkItemsInput!): JSON
+}
+type Mutation {
+  createBriefWithSlug(slug: String!, designerIds: [Int!], fields: Map): StructuredBrief
+}
