@@ -38,6 +38,8 @@ To use the tool edit the `sample.har` filename in line 11 of `har-to-graphql-sch
 
 You may need to edit lines 14 and 15, the logic that filters the entries in the HAR file to include only the relevent GraphQL calls, to meet your specific needs.
 
+Then run `node har-to-graphql-schema.js`.
+
 ## Example
 
 Suppose you have a HAR file with the following GraphQL request and response:
